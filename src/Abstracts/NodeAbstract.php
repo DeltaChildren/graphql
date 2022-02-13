@@ -57,7 +57,7 @@ abstract class NodeAbstract implements NodeInterface
      * @return NodeInterface
      * @throws InvalidArgumentTypeException
      */
-    final public function __call($name, $arguments): NodeInterface
+    final public function __call($name, $arguments)
     {
         if ($name === 'use') {
             return $this->useM($arguments);
@@ -74,7 +74,12 @@ abstract class NodeAbstract implements NodeInterface
         return $this->generate($name, $arguments[0] ?? []);
     }
 
-    final public function __set(string $name, NodeInterface $value): NodeInterface
+    /**
+     * @param string $name
+     * @param NodeInterface $value
+     * @return NodeInterface
+     */
+    final public function __set(string $name, NodeInterface $value)
     {
         return $this->addChild($name, $value);
     }
